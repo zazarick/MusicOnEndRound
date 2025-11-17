@@ -68,11 +68,7 @@ namespace MusicOnEndRound.Commands
                     trackName = Path.GetFileNameWithoutExtension(selectedFile);
                 }
 
-                if (!Plugin.Instance.Config.Tracks.TryGetValue(trackName, out var trackSettings))
-                {
-                    response = $"Настройки для трека {trackName} не найдены в конфигурации";
-                    return false;
-                }
+                var trackSettings = Plugin.Instance.GetTrackSettings(trackName);
 
                 float volume = trackSettings.Volume;
                 if (volume < 0f) volume = 0f;

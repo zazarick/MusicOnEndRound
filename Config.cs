@@ -23,7 +23,7 @@ namespace MusicOnEndRound
         [Description("Зациклить воспроизведение музыки?")]
         public bool LoopMusic { get; set; } = false;
 
-        [Description("Настройки для каждого трека. Ключ - название файла без расширения")]
+        [Description("Настройки для каждого трека. Ключ - название файла без расширения. Треки не указанные здесь будут использовать настройки по умолчанию (enabled: true, chance: 100, volume: 50)")]
         public Dictionary<string, TrackSettings> Tracks { get; set; } = new Dictionary<string, TrackSettings>
         {
             ["example_track"] = new TrackSettings(true, 100, 50f)

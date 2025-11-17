@@ -25,7 +25,7 @@
 - 🌍 **Global Audio** - Music plays for all players simultaneously
 - 🎲 **Weighted Random Selection** - Control how often each track plays
 - 🎚️ **Per-Track Settings** - Individual volume, chance, and enable/disable for each song
-- 🔄 **Auto-Discovery** - Automatically detects and adds new tracks to config
+- 🔄 **Auto-Discovery** - Automatically detects new tracks and uses default settings
 - 🎮 **Admin Commands** - Manual control over music playback
 - ⚙️ **Highly Configurable** - Fine-tune every aspect of the plugin
 
@@ -52,11 +52,23 @@ Files with different parameters may not play correctly or at all.
 2. Download **MusicOnEndRound.dll** and place it in `EXILED/Plugins`
 3. Start your server to generate the default config
 4. Add your `.ogg` music files to `EXILED/Configs/MusicOnEndRound`
-5. Restart the plugin or server
-6. Configure track settings in the config file
+5. Restart the plugin or server - tracks will work with default settings
+6. (Optional) Add tracks to config file for custom settings
 
 ## ⚙️ Configuration
 
+### Default Config
+```yaml
+music_on_end_round:
+  is_enabled: true
+  debug: false
+  music_folder_path: '%exiled%/Configs/MusicOnEndRound'
+  delay_before_play: 2
+  loop_music: false
+  tracks: {}
+```
+
+### Example with Custom Tracks
 ```yaml
 music_on_end_round:
   is_enabled: true
@@ -66,8 +78,11 @@ music_on_end_round:
   loop_music: false
   tracks:
     epic_victory:
+      # Enable/disable this track
       enabled: true
+      # Playback chance (0-100)
       chance: 100
+      # Track volume (0-100)
       volume: 60
     dramatic_ending:
       enabled: true
@@ -100,6 +115,11 @@ Each track (key = filename without extension) has:
 | `chance` | Playback chance weight (0-100) |
 | `volume` | Track-specific volume (0-100) |
 
+> **Note:** Tracks not listed in config will automatically use default settings:
+> - `enabled: true`
+> - `chance: 100`
+> - `volume: 50`
+
 #### 📊 How Chance System Works
 
 The plugin uses **weighted random selection**. Higher chance values = more frequent playback.
@@ -108,6 +128,25 @@ The plugin uses **weighted random selection**. Higher chance values = more frequ
 - Track 1: ~57% playback rate
 - Track 2: ~29% playback rate  
 - Track 3: ~14% playback rate
+
+#### 🔧 Adding New Tracks
+
+**Step 1:** Add your `.ogg` file to the music folder (e.g., `my_epic_song.ogg`)
+
+**Step 2:** Reload the plugin - it will work with default settings automatically
+
+**Step 3 (Optional):** To customize the track, add it to config:
+```yaml
+tracks:
+  my_epic_song:  # filename without extension
+    enabled: true
+    chance: 75
+    volume: 60
+```
+
+**Step 4:** Reload configs or restart server
+
+> 💡 **Tip:** The plugin will show you which tracks are not in config when it loads, making it easy to add them!
 
 ## 🎮 Commands
 
@@ -160,7 +199,7 @@ MusicOnEndRound/
 - 🌍 **Глобальное аудио** - Музыка играет для всех игроков одновременно
 - 🎲 **Взвешенный случайный выбор** - Контролируйте частоту воспроизведения каждого трека
 - 🎚️ **Настройки для каждого трека** - Индивидуальная громкость, шанс и включение/выключение
-- 🔄 **Автообнаружение** - Автоматически находит и добавляет новые треки в конфиг
+- 🔄 **Автообнаружение** - Автоматически находит новые треки и использует настройки по умолчанию
 - 🎮 **Команды администратора** - Ручное управление воспроизведением
 - ⚙️ **Гибкая настройка** - Настройте каждый аспект плагина
 
@@ -187,11 +226,23 @@ MusicOnEndRound/
 2. Скачайте **MusicOnEndRound.dll** и поместите в `EXILED/Plugins`
 3. Запустите сервер для генерации конфига
 4. Добавьте ваши `.ogg` файлы в `EXILED/Configs/MusicOnEndRound`
-5. Перезапустите плагин или сервер
-6. Настройте треки в конфигурационном файле
+5. Перезапустите плагин или сервер - треки будут работать с настройками по умолчанию
+6. (Опционально) Добавьте треки в конфиг для персональных настроек
 
 ## ⚙️ Конфигурация
 
+### Конфиг по умолчанию
+```yaml
+music_on_end_round:
+  is_enabled: true
+  debug: false
+  music_folder_path: '%exiled%/Configs/MusicOnEndRound'
+  delay_before_play: 2
+  loop_music: false
+  tracks: {}
+```
+
+### Пример с настроенными треками
 ```yaml
 music_on_end_round:
   is_enabled: true
@@ -201,8 +252,11 @@ music_on_end_round:
   loop_music: false
   tracks:
     epic_victory:
+      # Включен ли этот трек?
       enabled: true
+      # Шанс воспроизведения этого трека (0-100)
       chance: 100
+      # Громкость этого трека (0-100)
       volume: 60
     dramatic_ending:
       enabled: true
@@ -235,6 +289,11 @@ music_on_end_round:
 | `chance` | Вес шанса воспроизведения (0-100) |
 | `volume` | Громкость трека (0-100) |
 
+> **Примечание:** Треки, не указанные в конфиге, автоматически используют настройки по умолчанию:
+> - `enabled: true`
+> - `chance: 100`
+> - `volume: 50`
+
 #### 📊 Как работает система шансов
 
 Плагин использует **взвешенный случайный выбор**. Чем выше значение шанса = чаще воспроизведение.
@@ -243,6 +302,28 @@ music_on_end_round:
 - Трек 1: ~57% частота воспроизведения
 - Трек 2: ~29% частота воспроизведения
 - Трек 3: ~14% частота воспроизведения
+
+#### 🔧 Добавление новых треков
+
+**Шаг 1:** Добавьте ваш `.ogg` файл в папку с музыкой (например, `my_epic_song.ogg`)
+
+**Шаг 2:** Перезагрузите плагин - трек будет работать с настройками по умолчанию автоматически
+
+**Шаг 3 (Опционально):** Чтобы настроить трек, добавьте его в конфиг:
+```yaml
+tracks:
+  my_epic_song:  # имя файла без расширения
+    # Включен ли этот трек?
+    enabled: true
+    # Шанс воспроизведения этого трека (0-100)
+    chance: 75
+    # Громкость этого трека (0-100)
+    volume: 60
+```
+
+**Шаг 4:** Перезагрузите конфиги или перезапустите сервер
+
+> 💡 **Совет:** Плагин покажет вам, какие треки отсутствуют в конфиге при загрузке, что упрощает их добавление!
 
 ## 🎮 Команды
 
