@@ -1,7 +1,5 @@
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\MusicOnEndRound.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\MusicOnEndRound.pdb
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Assembly-CSharp-firstpass.dll
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Assembly-CSharp.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\CommandSystem.Core.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Exiled.API.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Exiled.CreditTags.dll
@@ -11,10 +9,7 @@ C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Exiled.Eve
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Exiled.Loader.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Exiled.Permissions.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\LabApi.dll
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Mirror.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\NorthwoodLib.dll
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\UnityEngine.CoreModule.dll
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\UnityEngine.PhysicsModule.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\YamlDotNet.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\Pooling.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\UnityEngine.AnimationModule.dll
@@ -36,7 +31,6 @@ C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Debug\MusicOnEnd
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Debug\MusicOnE.3D905E8E.Up2Date
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Debug\MusicOnEndRound.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Debug\MusicOnEndRound.pdb
-C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\AudioPlayerApi.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\SharpCompress.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\NVorbis.dll
 C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\bin\Debug\System.Memory.dll

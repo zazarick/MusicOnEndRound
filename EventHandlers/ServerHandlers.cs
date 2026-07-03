@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Server;
 using MEC;
@@ -11,20 +13,22 @@ namespace MusicOnEndRound.EventHandlers
     {
         public void OnRoundEnded(RoundEndedEventArgs ev)
         {
+            LeadingTeam outcome = ev.LeadingTeam;
+
             Timing.CallDelayed(Plugin.Instance.Config.DelayBeforePlay, () =>
             {
                 try
                 {
-                    string musicPath = GetMusicPath();
-                    
+                    string musicPath = GetMusicPath(outcome);
+
                     if (string.IsNullOrEmpty(musicPath))
                     {
-                        Log.Warn("Не удалось найти музыкальный файл для воспроизведения");
+                        Log.Warn($"Не удалось найти музыкальный файл для исхода {outcome}");
                         return;
                     }
 
                     if (Plugin.Instance.Config.Debug)
-                        Log.Info($"Воспроизведение трека: {Path.GetFileName(musicPath)}");
+                        Log.Info($"Исход раунда: {outcome}. Воспроизведение трека: {Path.GetFileName(musicPath)}");
 
                     PlayMusicForAll(musicPath);
                 }
@@ -35,7 +39,7 @@ namespace MusicOnEndRound.EventHandlers
             });
         }
 
-        private string GetMusicPath()
+        private string GetMusicPath(LeadingTeam outcome)
         {
             string folderPath = Plugin.Instance.Config.MusicFolderPath;
             string[] supportedFormats = { "*.ogg", "*.mp3", "*.wav" };
@@ -49,22 +53,22 @@ namespace MusicOnEndRound.EventHandlers
                 return null;
             }
 
-            var tracksWithSettings = new System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, Models.TrackSettings>>();
+            var tracksWithSettings = new List<KeyValuePair<string, Models.TrackSettings>>();
 
             foreach (string file in allMusicFiles)
             {
                 string trackName = Path.GetFileNameWithoutExtension(file);
                 var settings = Plugin.Instance.GetTrackSettings(trackName);
 
-                if (settings.Enabled)
+                if (settings.Enabled && settings.Outcome == outcome)
                 {
-                    tracksWithSettings.Add(new System.Collections.Generic.KeyValuePair<string, Models.TrackSettings>(file, settings));
+                    tracksWithSettings.Add(new KeyValuePair<string, Models.TrackSettings>(file, settings));
                 }
             }
 
             if (tracksWithSettings.Count == 0)
             {
-                Log.Warn("Нет включенных треков для воспроизведения");
+                Log.Warn($"Нет включенных треков для исхода {outcome}");
                 return null;
             }
 
@@ -74,8 +78,8 @@ namespace MusicOnEndRound.EventHandlers
             return selectedTrack.Key;
         }
 
-        private System.Collections.Generic.KeyValuePair<string, Models.TrackSettings> SelectTrackByChance(
-            System.Collections.Generic.List<System.Collections.Generic.KeyValuePair<string, Models.TrackSettings>> tracks,
+        private KeyValuePair<string, Models.TrackSettings> SelectTrackByChance(
+            List<KeyValuePair<string, Models.TrackSettings>> tracks,
             Random random)
         {
             int totalChance = tracks.Sum(t => t.Value.Chance);

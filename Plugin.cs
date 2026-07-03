@@ -100,9 +100,9 @@ namespace MusicOnEndRound
                 return settings;
 
             if (Config.Debug)
-                Log.Debug($"Трек {trackName} не найден в конфиге, используются настройки по умолчанию");
+                Log.Debug($"Трек {trackName} не найден в конфиге, используются настройки по умолчанию (исход Draw)");
 
-            return new Models.TrackSettings(true, 100, 50f);
+            return new Models.TrackSettings(true, Exiled.API.Enums.LeadingTeam.Draw, 100, 50f);
         }
 
         public override void OnDisabled()

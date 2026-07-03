@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using Exiled.API.Enums;
 
 namespace MusicOnEndRound.Models
 {
@@ -7,7 +8,10 @@ namespace MusicOnEndRound.Models
         [Description("Включен ли этот трек?")]
         public bool Enabled { get; set; } = true;
 
-        [Description("Шанс воспроизведения этого трека (0-100)")]
+        [Description("Исход раунда, при котором играет трек: FacilityForces (МОГ/Наука), ChaosInsurgency (ПХ), Anomalies (СЦП), Draw (Ничья)")]
+        public LeadingTeam Outcome { get; set; } = LeadingTeam.Draw;
+
+        [Description("Шанс воспроизведения этого трека среди треков того же исхода (0-100)")]
         public int Chance { get; set; } = 100;
 
         [Description("Громкость этого трека (0-100)")]
@@ -15,9 +19,10 @@ namespace MusicOnEndRound.Models
 
         public TrackSettings() { }
 
-        public TrackSettings(bool enabled, int chance, float volume)
+        public TrackSettings(bool enabled, LeadingTeam outcome, int chance, float volume)
         {
             Enabled = enabled;
+            Outcome = outcome;
             Chance = chance;
             Volume = volume;
         }

@@ -1,0 +1,2 @@
+C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Release\MusicOnEndRound.csproj.AssemblyReference.cache
+C:\Users\danya\source\repos\MusicOnEndRound\MusicOnEndRound\obj\Release\MusicOnEndRound.csproj.CoreCompileInputs.cache
